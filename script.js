@@ -1,4 +1,4 @@
-const CA = "0xComingsoon";
+const CA = "0xa9b5a5c6829691d5ebccc0b3c7a90c6008fd8416";
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const live = document.getElementById("live");
@@ -122,6 +122,7 @@ wishBtn.addEventListener("click", () => {
 
 if (!reduce && window.matchMedia("(hover: hover)").matches) {
   window.addEventListener("pointermove", (event) => {
+    glow.style.opacity = "1";
     glow.style.left = event.clientX + "px";
     glow.style.top = event.clientY + "px";
   }, { passive: true });

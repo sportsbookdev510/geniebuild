@@ -17,6 +17,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   min-height: 100vh;
   color: var(--ink);
   font-family: var(--font);
@@ -94,6 +95,8 @@ button, a { font-family: inherit; }
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.45s ease;
 }
 
 .flash {
@@ -465,7 +468,6 @@ h1 span {
 .tagline {
   margin: 16px 0 0;
   font-size: clamp(26px, 4vw, 42px);
-  font-weight: 750;
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.15;
@@ -698,7 +700,10 @@ h1 span {
   color: var(--green);
 }
 
-.block { padding: 108px 0; }
+.block { padding: 96px 0; }
+
+#how-to-buy { padding-bottom: 36px; }
+#join { padding-top: 28px; }
 
 .block-tight { padding-top: 40px; }
 
@@ -821,6 +826,8 @@ h2 {
 }
 
 .join {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 28px;
@@ -828,10 +835,21 @@ h2 {
   padding: 48px;
   border-radius: 28px;
   border: 1px solid rgba(166, 255, 0, 0.22);
-  background:
-    linear-gradient(100deg, rgba(5, 6, 5, 0.94) 12%, rgba(5, 6, 5, 0.62) 58%, rgba(5, 6, 5, 0.35)),
-    url("banner.png") right center / cover no-repeat;
+  background: #080a08;
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+}
+
+.join-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 55%, #000 84%);
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 55%, #000 84%);
 }
 
 .join h2 { max-width: 12ch; }
@@ -846,7 +864,7 @@ h2 {
   border-radius: 22px;
   text-decoration: none;
   color: var(--ink);
-  background: rgba(8, 12, 8, 0.72);
+  background: rgba(8, 12, 8, 0.92);
   border: 1px solid rgba(166, 255, 0, 0.28);
   backdrop-filter: blur(8px);
   transition: transform 0.25s ease, border-color 0.25s ease;
@@ -902,8 +920,8 @@ h2 {
 @media (max-width: 800px) {
   .split,
   .cards,
-  .join { grid-template-columns: 1fr; }
-  .join { padding: 28px 22px; }
+  .join { grid-template-columns: 1fr; padding: 28px 22px; }
+  .join-bg { display: none; }
   h2 { max-width: none; }
 }
 
