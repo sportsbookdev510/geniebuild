@@ -1,4 +1,4 @@
-const CA = "0xa9b5a5c6829691d5ebccc0b3c7a90c6008fd8416";
+const CA = "0xbd864614fdb413ab45f9a44181f61f0757c78bf2";
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const live = document.getElementById("live");
